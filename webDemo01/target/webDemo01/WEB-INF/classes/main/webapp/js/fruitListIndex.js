@@ -5,11 +5,11 @@ window.onload=function (){
 
 function deleteFruit(uid){
     if(confirm('是否确认删除')){
-        window.location.href="delete.do?uid=" + uid;
+        window.location.href="fruit.do?uid=" + uid+"&operate=delete";
     }
 
 }
 
 function pageContext(pageNum){
-    window.location.href="fruit?pageNum="+pageNum;
+    window.location.href="fruit.do?pageNum="+pageNum;
 }

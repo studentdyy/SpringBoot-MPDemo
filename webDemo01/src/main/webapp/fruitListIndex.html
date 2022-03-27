@@ -11,14 +11,14 @@
 			<div id="div_fruit_list">
 				<p class="center f30">欢迎使用水果库存管理系统</p>
 				<div id="div_search">
-					<form th:action="@{/fruit}" method="post">
+					<form th:action="@{/fruit.do}" method="post">
 						<input type="hidden" name="flag" value="search">
 						搜索水果库存:  <input type="text" name="keyWord" th:value="${session.keyWord}">
 						<input type="submit" value="搜索" class="btn">
 					</form>
 				</div>
 				<div class="add_fruit">
-					<a th:href="@{add.html}">增加水果信息</a>
+					<a th:href="@{/add.html}">增加水果信息</a>
 				</div>
 				<table id="tbl_fruit">
 					<tr>
@@ -32,7 +32,7 @@
 					</tr>
 					<tr th:unless="${#lists.isEmpty(session.fruitList)}"
 						th:each="fruit : ${session.fruitList}">
-						<td><a th:text="${fruit.name}" th:href="@{/edit.do(uid=${fruit.uid})}">苹果</a></td>
+						<td><a th:text="${fruit.name}" th:href="@{/fruit.do(uid=${fruit.uid},operate='edit')}">苹果</a></td>
 						<td th:text="${fruit.price}">5</td>
 						<td th:text="${fruit.number}">20</td>
 						<td><input type="button" class="btn" value="删除" th:onclick="|deleteFruit(${fruit.uid})|"/></td>
