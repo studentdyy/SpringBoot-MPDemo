@@ -1,0 +1,12 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--定义别名-->
+    <typeAliases>
+        <typeAlias type="com.dyyhub.bookCity.pojo.User" alias="User"></typeAlias>
+
+    </typeAliases>
+
+
+</configuration>

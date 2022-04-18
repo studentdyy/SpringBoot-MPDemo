@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/test.css">
+</head>
+<body>
+    <table class="imagetable">
+        <tr>
+            <th>id</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>email</th>
+            <th>角色</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(user)}">
+            <td colspan="5">对不起 库存为空!</td>
+        </tr>
+        <tr th:unless="${#lists.isEmpty(user)}"
+            th:each="user : ${user}">
+            <td th:text="${user.id}">user.id</td>
+            <td th:text="${user.uname}">user.uname</td>
+            <td th:text="${user.pwd}">user.pwd</td>
+            <td th:text="${user.email}">user.email</td>
+            <td th:text="${user.role}">user.role</td>
+        </tr>
+    </table>
+</body>
+</html>
