@@ -5,4 +5,19 @@
     <select id="selectAll" resultType="test">
         select * from test
     </select>
+
+
+    <insert id="insert" parameterType="test">
+        insert into test values (null,#{name},#{money})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from test where id = #{id}
+    </delete>
+
+    <update id="updateTest" parameterType="test" >
+        update test set name=#{name} ,money=#{money} where id=#{id};
+
+
+    </update>
 </mapper>

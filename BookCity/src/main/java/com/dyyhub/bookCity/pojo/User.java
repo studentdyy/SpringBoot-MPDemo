@@ -10,6 +10,17 @@ public class User {
     public User() {
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", uname='" + uname + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }

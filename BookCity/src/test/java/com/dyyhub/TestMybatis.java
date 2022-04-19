@@ -3,6 +3,7 @@ package com.dyyhub;
 import com.dyyhub.bookCity.mapper.UserMapper;
 import com.dyyhub.bookCity.mapper.testMapper;
 import com.dyyhub.bookCity.pojo.User;
+import com.dyyhub.bookCity.pojo.test;
 import com.dyyhub.bookCity.service.UserService;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -21,12 +22,14 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-public class test {
+public class TestMybatis {
 
     @Autowired
     UserMapper userMapper;
     @Autowired
     SqlSession sqlSession;
+    @Autowired
+    testMapper testMapper;
 
 
     @Test
@@ -44,7 +47,6 @@ public class test {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         List<User> userList = mapper.findAll();
         System.out.println(userList);
-        sqlSession.close();
     }
 
 
@@ -69,5 +71,46 @@ public class test {
         testMapper mapper = sqlSession.getMapper(testMapper.class);
         List<com.dyyhub.bookCity.pojo.test> tests = mapper.selectAll();
         System.out.println(tests);
+    }
+    @Test
+    public void  test8(){
+        test test = new test("jex",6000);
+        testMapper.insert(test);
+        System.out.println(test);
+    }
+    @Test
+    public void  test9(){
+        testMapper.deleteById(3);
+    }
+    @Test
+    public void  test10(){
+        test test = new test("jex",3);
+        test.setId(4);
+        testMapper.updateTest(test);
+    }
+    @Test
+    public void  test5(){
+        UserMapper UserMapper = sqlSession.getMapper(UserMapper.class);
+        List<User> userList = UserMapper.findAll();
+        for(User user : userList){
+            System.out.println(user);
+        }
+    }
+    @Test
+    public void  test6(){
+        UserMapper UserMapper = sqlSession.getMapper(UserMapper.class);
+        User user = UserMapper.getByUserId(1);
+
+        System.out.println(user);
+
+    }
+    @Test
+    public void  test7(){
+
+        UserMapper UserMapper = sqlSession.getMapper(UserMapper.class);
+        User user = UserMapper.getByUserId(1);
+
+        System.out.println(user);
+
     }
 }

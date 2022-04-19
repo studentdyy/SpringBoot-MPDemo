@@ -8,7 +8,19 @@
         select * from t_user
     </select>
 
-    <select id="getByUserId" resultType="User">
-	   SELECT * FROM t_user WHERE user_id = #{userId}
+    <select id="getByUserId" parameterType="java.lang.Integer" resultType="User">
+	   select * from t_user where id = #{id}
 	</select>
+
+    <update id="save" parameterType="User" >
+        update t_user
+        <set>
+            <if test="uname!=null">uname=#{uname},</if>
+            <if test="pwd!=null">pwd=#{pwd},</if>
+            <if test="email!=null">email=#{email},</if>
+            <if test="role!=null">role=#{role}</if>
+        </set>
+        where id = #{id}
+    </update>
+
 </mapper>

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService {
 //        }catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        return null;
+        return userMapper.findAll();
     }
 
     @Override

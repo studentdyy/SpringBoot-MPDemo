@@ -8,6 +8,11 @@ public class test {
     public test() {
     }
 
+    public test(String name, Integer money) {
+        this.name = name;
+        this.money = money;
+    }
+
     @Override
     public String toString() {
         return "test{" +
