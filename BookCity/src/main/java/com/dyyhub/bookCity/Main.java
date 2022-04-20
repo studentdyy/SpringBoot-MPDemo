@@ -13,7 +13,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) throws ServletException, LifecycleException {
         Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8081);
+        tomcat.setPort(8080);
         tomcat.getConnector();
 
         //创建webAPP

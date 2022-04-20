@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public User login(String name, String password) {
+        return userMapper.selectOne(name,password);
+    }
+
 }

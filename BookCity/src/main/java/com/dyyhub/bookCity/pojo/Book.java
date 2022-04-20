@@ -13,6 +13,23 @@ public class Book {
     public Book() {
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", bookImg='" + bookImg + '\'' +
+                ", bookName='" + bookName + '\'' +
+                ", price=" + price +
+                ", author='" + author + '\'' +
+                ", saleCount=" + saleCount +
+                ", bookCount=" + bookCount +
+                ", bookStatus=" + bookStatus +
+                '}';
+    }
+
+    public Book(Integer id) {
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;

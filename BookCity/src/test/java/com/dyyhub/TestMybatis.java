@@ -1,10 +1,14 @@
 package com.dyyhub;
 
+import com.dyyhub.bookCity.mapper.BookMapper;
+import com.dyyhub.bookCity.mapper.CartItemMapper;
 import com.dyyhub.bookCity.mapper.UserMapper;
 import com.dyyhub.bookCity.mapper.testMapper;
+import com.dyyhub.bookCity.pojo.Book;
+import com.dyyhub.bookCity.pojo.CartItem;
 import com.dyyhub.bookCity.pojo.User;
 import com.dyyhub.bookCity.pojo.test;
-import com.dyyhub.bookCity.service.UserService;
+import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -30,7 +34,10 @@ public class TestMybatis {
     SqlSession sqlSession;
     @Autowired
     testMapper testMapper;
-
+    @Autowired
+    BookMapper bookMapper;
+    @Autowired
+    CartItemMapper cartItemMapper;
 
     @Test
     public void  test1(){
@@ -104,13 +111,60 @@ public class TestMybatis {
         System.out.println(user);
 
     }
+    //分页测试
     @Test
     public void  test7(){
+        PageHelper.startPage(1,3);
+        List<User> userList = userMapper.findAll();
+        System.out.println(userList);
+    }
 
-        UserMapper UserMapper = sqlSession.getMapper(UserMapper.class);
-        User user = UserMapper.getByUserId(1);
+    //多属性注入测试
+    @Test
+    public void  test11(){
 
-        System.out.println(user);
+        System.out.println(userMapper.selectOne("kate","ok"));
+    }
+
+    @Test
+    public void  test12(){
+        List<Book> bookList = bookMapper.getBookList();
+        for (Book book:bookList) {
+            System.out.println(book);
+        }
+    }
+    @Test
+    public void  test14(){
+        List<CartItem> cartItemList = cartItemMapper.getListByUserID(1);
+        for (CartItem cartItem:cartItemList) {
+            System.out.println(cartItem);
+            //System.out.println(cartItem.getBook().getBookImg());
+        }
+    }
+    @Test
+    public void  test15(){
+        CartItem cartItem = new CartItem(18,8,1,1);
+        cartItemMapper.updateCartItem(cartItem);
+    }
+    @Test
+    public void  test16(){
+        CartItem cartItem = new CartItem(8,1,2);
+        cartItemMapper.add(cartItem);
+    }
+
+    //多对多查询，通过遍历中间表集合，然后封装对象达成！
+    @Test
+    public void  test17(){
+
+        List<CartItem> cartItemList = cartItemMapper.getListByUserID(1);
+        for(CartItem cartItem : cartItemList){
+            Book Book = bookMapper.getBookById(cartItem.getBookID());
+//            User user = userMapper.getByUserId(1);
+            cartItem.setBook(Book);
+//            cartItem.setUser(user);
+            System.out.println(cartItem);
+        }
+
 
     }
 }

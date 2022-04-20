@@ -13,7 +13,7 @@
 
     <!--静态资源开放-->
 <!--    <mvc:default-servlet-handler/>-->
-    <mvc:resources mapping="/css/**" location="/WEB-INF/css/"></mvc:resources>
+    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"></mvc:resources>
     <!--注解驱动-->
     <mvc:annotation-driven/>
     

@@ -23,4 +23,7 @@
         where id = #{id}
     </update>
 
+    <select id="selectOne" resultType="User">
+        select * from t_user where uname=#{uname} and pwd=#{password};
+    </select>
 </mapper>

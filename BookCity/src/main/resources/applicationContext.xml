@@ -15,7 +15,7 @@
         <!--排除Controller的扫描-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-    
+
     <!--加载配置文件-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <!--配置数据源-->
@@ -26,9 +26,9 @@
         <property name="password" value="${jdbc.password}"></property>
     </bean>
     <!--整合mybatis-->
-        <!--配置sqlsessionFactory-->
-        <!--配置mapper扫描-->
-        <!--配置sqlsessionTemplate-->
+    <!--配置sqlsessionFactory-->
+    <!--配置mapper扫描-->
+    <!--配置sqlsessionTemplate-->
 
     <bean id="SqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>

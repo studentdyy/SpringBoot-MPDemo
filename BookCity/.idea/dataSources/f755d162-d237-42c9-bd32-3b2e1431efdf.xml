@@ -726,7 +726,7 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="226" parent="211" name="book">
+    <column id="226" parent="211" name="bookID">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
     </column>
@@ -734,16 +734,16 @@
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="228" parent="211" name="userBean">
+    <column id="228" parent="211" name="userID">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
     <index id="229" parent="211" name="FK_cart_book">
-      <ColNames>book</ColNames>
+      <ColNames>bookID</ColNames>
       <Type>btree</Type>
     </index>
     <index id="230" parent="211" name="FK_cart_user">
-      <ColNames>userBean</ColNames>
+      <ColNames>userID</ColNames>
       <Type>btree</Type>
     </index>
     <key id="231" parent="211" name="PRIMARY">
@@ -752,12 +752,12 @@
       <Primary>1</Primary>
     </key>
     <foreign-key id="232" parent="211" name="FK_cart_book">
-      <ColNames>book</ColNames>
+      <ColNames>bookID</ColNames>
       <RefTableName>t_book</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="233" parent="211" name="FK_cart_user">
-      <ColNames>userBean</ColNames>
+      <ColNames>userID</ColNames>
       <RefTableName>t_user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
