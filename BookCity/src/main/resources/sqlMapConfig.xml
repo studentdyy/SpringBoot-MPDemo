@@ -11,6 +11,8 @@
         <typeAlias type="com.dyyhub.bookCity.pojo.test" alias="test"></typeAlias>
         <typeAlias type="com.dyyhub.bookCity.pojo.Book" alias="Book"></typeAlias>
         <typeAlias type="com.dyyhub.bookCity.pojo.CartItem" alias="CartItem"></typeAlias>
+        <typeAlias type="com.dyyhub.bookCity.pojo.OrderBean" alias="OrderBean"></typeAlias>
+        <typeAlias type="com.dyyhub.bookCity.pojo.OrderItem" alias="OrderItem"></typeAlias>
     </typeAliases>
     
 <!--    &lt;!&ndash;配置分页助手&ndash;&gt;-->

@@ -55,6 +55,9 @@
         select * from t_cart_item where userID = #{id}
     </select>
 
+    <delete id="deleteCartItem" parameterType="CartItem">
+         delete from t_cart_item where id = #{id}
+    </delete>
 
 
 </mapper>

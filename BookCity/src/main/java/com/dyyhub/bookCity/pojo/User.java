@@ -1,5 +1,7 @@
 package com.dyyhub.bookCity.pojo;
 
+import java.util.List;
+
 public class User {
     private Integer id;
     private String uname;
@@ -7,7 +9,19 @@ public class User {
     private String email;
     private Integer role;
 
+    private List<OrderBean> orderBeans;
+
+    private Cart cart;
+
     public User() {
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     @Override
@@ -18,7 +32,17 @@ public class User {
                 ", pwd='" + pwd + '\'' +
                 ", email='" + email + '\'' +
                 ", role=" + role +
+                ", orderBeans=" + orderBeans +
+                ", cart=" + cart +
                 '}';
+    }
+
+    public List<OrderBean> getOrderBeans() {
+        return orderBeans;
+    }
+
+    public void setOrderBeans(List<OrderBean> orderBeans) {
+        this.orderBeans = orderBeans;
     }
 
     public User(Integer id) {

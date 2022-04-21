@@ -2,11 +2,27 @@ package com.dyyhub.bookCity.pojo;
 
 public class OrderItem {
     private Integer id;
-    private Book book;          //M:1
+    private Integer book;
     private Integer buyCount;
-    private OrderBean orderBean;  // M:1
+    private Integer orderBean;
+
+    private OrderBean orderBeanObject;  // M:1
+    private Book bookObject;          //M:1
 
     public OrderItem() {
+    }
+
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", book=" + book +
+                ", buyCount=" + buyCount +
+                ", orderBean=" + orderBean +
+                ", orderBeanObject=" + orderBeanObject +
+                ", bookObject=" + bookObject +
+                '}';
     }
 
     public Integer getId() {
@@ -17,11 +33,11 @@ public class OrderItem {
         this.id = id;
     }
 
-    public Book getBook() {
+    public Integer getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(Integer book) {
         this.book = book;
     }
 
@@ -33,11 +49,27 @@ public class OrderItem {
         this.buyCount = buyCount;
     }
 
-    public OrderBean getOrderBean() {
+    public Integer getOrderBean() {
         return orderBean;
     }
 
-    public void setOrderBean(OrderBean orderBean) {
+    public void setOrderBean(Integer orderBean) {
         this.orderBean = orderBean;
+    }
+
+    public OrderBean getOrderBeanObject() {
+        return orderBeanObject;
+    }
+
+    public void setOrderBeanObject(OrderBean orderBeanObject) {
+        this.orderBeanObject = orderBeanObject;
+    }
+
+    public Book getBookObject() {
+        return bookObject;
+    }
+
+    public void setBookObject(Book bookObject) {
+        this.bookObject = bookObject;
     }
 }

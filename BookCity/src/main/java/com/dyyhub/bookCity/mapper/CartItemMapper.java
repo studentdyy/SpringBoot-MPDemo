@@ -17,4 +17,7 @@ public interface CartItemMapper {
 
     //根据用户id获取购物车项
     List<CartItem> getListByUserID(@Param("id") Integer id);
+
+    //删除特定的购物车数据
+    void deleteCartItem(CartItem cartItem);
 }

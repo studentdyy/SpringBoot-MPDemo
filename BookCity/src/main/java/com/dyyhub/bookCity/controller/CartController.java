@@ -43,8 +43,14 @@ public class CartController {
 //        Book book = bookService.getBookById(bookId);
         User user  = (User) session.getAttribute("currUser");
         CartItem cartItem = new CartItem(bookId,1,user.getId());
-        Cart cart = (Cart) session.getAttribute("cart");
+        Cart cart = user.getCart();
+
         cartItemService.addOrUpdateCartItem(cartItem,cart);
+
+        //更新购物车
+        cartService.updateCart(user);
+
+
         return "redirect:/cart/list";
 //        cartItemService.addOrUpdateCartItem();
     }

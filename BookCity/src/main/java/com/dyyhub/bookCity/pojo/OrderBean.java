@@ -7,12 +7,62 @@ public class OrderBean {
     private Integer id;
     private String orderNo;
     private Date orderDate;
-    private User orderUser;
+    private Integer orderUser;
     private Double orderMoney;
     private Integer orderStatus;
+
+    private Integer totalCount;
+
     private List<OrderItem> orderItemList;  // 1: N
+    private User user;
 
     public OrderBean() {
+    }
+
+    @Override
+    public String toString() {
+        return "OrderBean{" +
+                "id=" + id +
+                ", orderNo='" + orderNo + '\'' +
+                ", orderDate=" + orderDate +
+                ", orderUser=" + orderUser +
+                ", orderMoney=" + orderMoney +
+                ", orderStatus=" + orderStatus +
+                ", orderItemList=" + orderItemList +
+                ", user=" + user +
+                '}';
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public Integer getOrderUser() {
+        return orderUser;
+    }
+
+    public void setOrderUser(Integer orderUser) {
+        this.orderUser = orderUser;
+    }
+
+    public List<OrderItem> getOrderItemList() {
+        return orderItemList;
+    }
+
+    public void setOrderItemList(List<OrderItem> orderItemList) {
+        this.orderItemList = orderItemList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Integer getId() {
@@ -39,13 +89,7 @@ public class OrderBean {
         this.orderDate = orderDate;
     }
 
-    public User getOrderUser() {
-        return orderUser;
-    }
 
-    public void setOrderUser(User orderUser) {
-        this.orderUser = orderUser;
-    }
 
     public Double getOrderMoney() {
         return orderMoney;

@@ -19,8 +19,8 @@
         </div>
         <div class="header-right">
           <h3>欢迎<span th:text="${session.currUser.uname}">张总</span>光临尚硅谷书城</h3>
-          <div class="order"><a href="../order/order.html">我的订单</a></div>
-          <div class="destory"><a href="../../index.html">注销</a></div>
+          <div class="order"><a th:href="@{/order/list}">我的订单</a></div>
+          <div class="destory"><a th:href="@{pages/index.html}">注销</a></div>
           <div class="gohome">
             <a th:href="@{/index}">返回</a>
           </div>
@@ -65,11 +65,11 @@
             <a href="#">继续购物</a>
           </div>
           <div class="footer-right">
-            <div>共<span th:text="${session.cart.getTotalBookCount()}">3</span>件商品</div>
+            <div>共<span th:text="${session.currUser.cart.getTotalBookCount()}">3</span>件商品</div>
             <div class="total-price">
-              总金额<span th:text="${session.cart.getTotalMoney()}">99.9</span>元
+              总金额<span th:text="${session.currUser.cart.getTotalMoney()}">99.9</span>元
             </div>
-            <a class="pay" href="checkout.html">去结账</a>
+            <a class="pay" th:href="@{/order/checkout}">去结账</a>
           </div>
         </div>
       </div>

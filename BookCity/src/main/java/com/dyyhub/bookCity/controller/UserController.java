@@ -44,8 +44,8 @@ public class UserController {
         User user = userService.login(username,password);
         if(user != null){
             Cart cart = cartService.getCartByUser(user);
+            user.setCart(cart);
             session.setAttribute("currUser",user);
-            session.setAttribute("cart",cart);
             return "redirect:/index";
 //            return "/user/login_success";
         }

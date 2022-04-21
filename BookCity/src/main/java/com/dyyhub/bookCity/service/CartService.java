@@ -12,4 +12,6 @@ public interface CartService {
 
     Cart getCartByUser(User user);
 
+    void updateCart(User user);
+
 }

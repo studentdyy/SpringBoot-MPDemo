@@ -1,13 +1,8 @@
 package com.dyyhub;
 
-import com.dyyhub.bookCity.mapper.BookMapper;
-import com.dyyhub.bookCity.mapper.CartItemMapper;
-import com.dyyhub.bookCity.mapper.UserMapper;
-import com.dyyhub.bookCity.mapper.testMapper;
-import com.dyyhub.bookCity.pojo.Book;
-import com.dyyhub.bookCity.pojo.CartItem;
-import com.dyyhub.bookCity.pojo.User;
-import com.dyyhub.bookCity.pojo.test;
+import com.dyyhub.bookCity.mapper.*;
+import com.dyyhub.bookCity.pojo.*;
+import com.dyyhub.bookCity.service.CartService;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -18,11 +13,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.DateUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -38,6 +40,13 @@ public class TestMybatis {
     BookMapper bookMapper;
     @Autowired
     CartItemMapper cartItemMapper;
+    @Autowired
+    OrderBeanMapper orderBeanMapper;
+    @Autowired
+    OrderItemMapper orderItemMapper;
+    @Autowired
+    CartService cartService;
+
 
     @Test
     public void  test1(){
@@ -164,7 +173,64 @@ public class TestMybatis {
 //            cartItem.setUser(user);
             System.out.println(cartItem);
         }
+    }
+    @Test
+    public void  test18(){
+        List<OrderBean> orderBeanList = orderBeanMapper.getListByUserId(1);
+        for (OrderBean orderBean : orderBeanList){
+            System.out.println(orderBean);
+        }
+    }
 
+    @Test
+    public void  test19(){
+        List<OrderItem> OrderItemList = orderItemMapper.getOrderListByOrderBeanId(4);
+        for (OrderItem orderItem : OrderItemList){
+            System.out.println(orderItem);
+        }
+    }
+    @Test
+    public void  test20(){
+        OrderBean orderBean = new OrderBean();
+        Date data = new Date();
+        orderBean.setOrderUser(1);
+        orderBean.setOrderMoney(500.0);
+        orderBean.setOrderStatus(0);
+        orderBean.setOrderDate(data);
+        orderBean.setOrderNo("b521cd49ab2943f0bbc0630c95978f1c_2021102511312112");
+        orderBeanMapper.addOrder(orderBean);
+        System.out.println(orderBean);
+    }
+    //时间格式化
+    @Test
+    public void  test21(){
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");;
+        LocalDateTime now = LocalDateTime.now();
+        String currTime = dateTimeFormatter.format(now);
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date currTime1 = new Date();
+        System.out.println(currTime1);
+
+//        Date date = new Date();
+//        System.out.println(date);
+    }
+    @Test
+    public void  test22(){
+        User user = new User();
+        user.setId(1);
+        Cart cart = cartService.getCartByUser(user);
+        Map<Integer,CartItem> cartItemMap = cart.getCartItemMap();
+        for(CartItem cartItem : cartItemMap.values()){
+            System.out.println(cartItem);
+        }
+    }
+    //获取订单的订单数量
+    @Test
+    public void  test23(){
+        OrderBean orderBean = new OrderBean();
+        orderBean.setId(28);
+        Integer totalCount = orderBeanMapper.getTotalCount(orderBean);
+        System.out.println(totalCount);
     }
 }

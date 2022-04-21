@@ -10,6 +10,8 @@ import com.dyyhub.bookCity.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,5 +46,13 @@ public class CartServiceImpl implements CartService {
         return cart;
     }
 
-
+    @Override
+    public void updateCart(User user) {
+        Map<Integer,CartItem> cartItemMap = new HashMap<>();
+        List<CartItem> cartItemList = showCartItemListByUserID(user.getId());
+        for (CartItem cartItem : cartItemList){
+            cartItemMap.put(cartItem.getBookID(),cartItem);
+        }
+        user.getCart().setCartItemMap(cartItemMap);
+    }
 }
