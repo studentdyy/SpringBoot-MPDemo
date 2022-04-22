@@ -22,10 +22,10 @@
             <i class="iconfont icon-ai-arrow-down"></i>
           </div>
           <div class="topbar-right" th:if="${session.currUser==null}">
-            <a href="./pages/user/login.html" class="login">登录</a>
-            <a href="./pages/user/regist.html" class="register">注册</a>
-            <a href="./pages/cart/cart.html" class="cart iconfont icon-gouwuche">购物车<div class="cart-num">3</div></a>
-            <a th:href="@{/pages/manager/book_manager.html}" class="admin">后台管理</a>
+            <a th:href="@{/login}" class="login">登录</a>
+            <a th:href="@{/regist}" class="register">注册</a>
+            <a th:href="@{/cart/list}" class="cart iconfont icon-gouwuche">购物车<div class="cart-num">3</div></a>
+            <a th:href="@{/manager}" class="admin">后台管理</a>
           </div>
           <!--登录后风格-->
           <div class="topbar-right" th:unless="${session.currUser==null}">
@@ -33,7 +33,7 @@
             <a href="#" class="register">注销</a>
             <!--/list&UserID=${session.currUser.id}|}-->
             <a th:href="@{/cart/list}" class="cart iconfont icon-gouwuche">购物车
-              <div class="cart-num" th:text="${session.currUser.cart.getTotalCartNum()}">3</div>
+              <div class="cart-num" th:text="${session.currUser.cart.getTotalCartNum()}">0</div>
             </a>
             <a href="./pages/manager/book_manager.html" class="admin">后台管理</a>
           </div>

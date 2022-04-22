@@ -62,4 +62,12 @@ public class CartController {
         request.setAttribute("cartItemList",cartItemList);
         return "cart/cart";
     }
+
+    @RequestMapping("/updateBuyCount")
+    public String updateBuyCount(HttpSession session,Integer cartItemId,String operate){
+        User user = (User) session.getAttribute("currUser");
+        cartItemService.updateBuyCount(cartItemId,operate);
+        cartService.updateCart(user);
+        return "forward:/cart/list";
+    }
 }

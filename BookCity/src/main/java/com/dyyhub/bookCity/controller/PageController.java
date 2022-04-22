@@ -33,4 +33,8 @@ public class PageController {
 //    public String cartPage(){
 //        return "cart/cart";
 //    }
+
+    @RequestMapping("/register")
+    public String registerPage(){
+        return "user/regist"; }
 }

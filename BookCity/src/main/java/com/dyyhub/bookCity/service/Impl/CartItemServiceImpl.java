@@ -36,6 +36,15 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    public void updateBuyCount(Integer cartItemId, String operate) {
+        if(operate.equals("reduce")){
+            cartItemMapper.reduceBuyCount(cartItemId);
+        }else if(operate.equals("increase")){
+            cartItemMapper.increaseBuyCount(cartItemId);
+        }
+    }
+
+    @Override
     public void addOrUpdateCartItem(CartItem cartItem, Cart cart) {
         //判断当前用户的这本书是否有对应的cartItem
         //有 则update，无 则add

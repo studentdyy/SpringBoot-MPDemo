@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/static/css/minireset.css}" />
     <link rel="stylesheet" th:href="@{/static/css/common.css}" />
     <link rel="stylesheet" th:href="@{/static/css/cart.css}" />
+    <script language="JavaScript" th:src="@{/static/script/cart.js}"></script>
   </head>
   <body>
     <div class="header">
@@ -49,12 +50,12 @@
               <!--th:text="${cartItem.getBook().getBookName()"}-->
               <td th:text="${cartItem.book.bookName}">活着</td>
               <td>
-                <span class="count">-</span>
+                <span class="count" th:onclick="|updateCartItemBuyCount(${cartItem.id},'reduce')|">-</span>
                 <input class="count-num" type="text" th:value="${cartItem.buyCount}" />
-                <span class="count">+</span>
+                <span class="count" th:onclick="|updateCartItemBuyCount(${cartItem.id},'increase')|">+</span>
               </td>
               <td th:text="${cartItem.book.price}">36.8</td>
-              <td th:text="${cartItem.book.price * cartItem.buyCount}">36.8</td>
+              <td th:text="${cartItem.xj}">36.8</td>
               <td><a href="">删除</a></td>
             </tr>
           </tbody>

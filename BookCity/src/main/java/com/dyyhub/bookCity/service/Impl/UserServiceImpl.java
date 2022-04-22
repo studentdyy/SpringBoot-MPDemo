@@ -3,16 +3,9 @@ package com.dyyhub.bookCity.service.Impl;
 import com.dyyhub.bookCity.mapper.UserMapper;
 import com.dyyhub.bookCity.pojo.User;
 import com.dyyhub.bookCity.service.UserService;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 @Service("UserService")
@@ -46,6 +39,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(String name, String password) {
         return userMapper.selectOne(name,password);
+    }
+
+    @Override
+    public void register(User user) {
+        userMapper.register(user);
     }
 
 }

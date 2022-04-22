@@ -45,6 +45,12 @@
         insert into t_cart_item values (null,#{bookID},#{buyCount},#{userID})
     </insert>
 
+    <update id="increaseBuyCount" parameterType="java.lang.Integer">
+        update t_cart_item set buyCount = buyCount + 1 where id = #{id}
+    </update>
+    <update id="reduceBuyCount" parameterType="java.lang.Integer">
+        update t_cart_item set buyCount = buyCount - 1 where id = #{id}
+    </update>
 
 
     <update id="updateCartItem" parameterType="CartItem">

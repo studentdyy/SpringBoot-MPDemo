@@ -1,6 +1,8 @@
 package com.dyyhub.bookCity.pojo;
 
 
+import java.math.BigDecimal;
+
 public class CartItem {
     private Integer id;
     private Integer bookID;
@@ -9,6 +11,9 @@ public class CartItem {
 
     private Book book;
     private User user;
+
+    //小计
+    private double xj;
 
     @Override
     public String toString() {
@@ -86,5 +91,11 @@ public class CartItem {
         this.userID = userID;
     }
 
+    public double getXj() {
+        BigDecimal bigDecimalPrice = new BigDecimal(""+getBook().getPrice());
+        BigDecimal bigDecimalBuyCount = new BigDecimal(""+buyCount);
+        BigDecimal bigDecimalXJ = bigDecimalPrice.multiply(bigDecimalBuyCount);
+        return bigDecimalXJ.doubleValue();
+    }
 
 }

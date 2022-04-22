@@ -11,5 +11,7 @@ public interface UserMapper {
     public List<User> findAll();
     public User getByUserId(Integer Id);
 
+    void register(User user);
+
     public User selectOne(@Param("uname") String name, @Param("password") String password);
 }

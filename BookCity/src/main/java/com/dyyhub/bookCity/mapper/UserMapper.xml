@@ -24,6 +24,10 @@
     </update>
 
     <select id="selectOne" resultType="User">
-        select * from t_user where uname=#{uname} and pwd=#{password};
+        select * from t_user where uname=#{uname} and pwd=#{password}
     </select>
+
+    <insert id="register" parameterType="User">
+        insert into t_user values (null,#{uname},#{pwd},#{email},0)
+    </insert>
 </mapper>

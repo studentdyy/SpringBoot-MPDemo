@@ -12,6 +12,8 @@ public interface CartItemService {
 
     void update(CartItem cartItem);
 
+    void updateBuyCount(Integer cartItemId,String operate);
+
     void addOrUpdateCartItem(CartItem cartItem, Cart cart);
 
     List<CartItem> getListByUserID(Integer userId);

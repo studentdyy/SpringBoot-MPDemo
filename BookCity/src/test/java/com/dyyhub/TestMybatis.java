@@ -165,7 +165,7 @@ public class TestMybatis {
     @Test
     public void  test17(){
 
-        List<CartItem> cartItemList = cartItemMapper.getListByUserID(1);
+        List<CartItem> cartItemList = cartItemMapper.getListByUserID(2);
         for(CartItem cartItem : cartItemList){
             Book Book = bookMapper.getBookById(cartItem.getBookID());
 //            User user = userMapper.getByUserId(1);

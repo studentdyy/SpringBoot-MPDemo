@@ -12,6 +12,11 @@ public interface CartItemMapper {
     //修改购物车项
     void updateCartItem(CartItem cartItem);
 
+    //增加购买数量
+    void increaseBuyCount(Integer cartItemId);
+    //减少购买数量
+    void reduceBuyCount(Integer cartItemId);
+
 //    //根据id显示用户购物车列表
 //    List<CartItem> getCartItemByUserBeanId(@Param("id") Integer id);
 

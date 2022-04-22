@@ -2,6 +2,7 @@ package com.dyyhub.bookCity.pojo;
 
 
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,6 +18,10 @@ public class Cart {
     private Integer totalCartNum;
     //购物车所有商品数量
     private Integer totalBookCount;
+
+    BigDecimal bigDecimalPrice = null;
+    BigDecimal bigDecimalBuyCount = null;
+    BigDecimal bigDecimalZJ = null;
 
 
     public Cart() {
@@ -36,7 +41,10 @@ public class Cart {
             Set<Map.Entry<Integer, CartItem>> entries = cartItemMap.entrySet();
             for(Map.Entry<Integer, CartItem> cartItemEntry : entries){
                 CartItem cartItem = cartItemEntry.getValue();
-                totalMoney = totalMoney + cartItem.getBook().getPrice() * cartItem.getBuyCount();
+                bigDecimalPrice = new BigDecimal(""+cartItem.getBook().getPrice());
+                bigDecimalBuyCount = new BigDecimal(""+cartItem.getBuyCount());
+                bigDecimalZJ = bigDecimalPrice.multiply(bigDecimalBuyCount);
+                totalMoney = totalMoney + bigDecimalZJ.doubleValue();
             }
         }
         return totalMoney;

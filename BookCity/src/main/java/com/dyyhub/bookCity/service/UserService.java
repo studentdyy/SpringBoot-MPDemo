@@ -9,4 +9,6 @@ public interface UserService {
     public User getByUserId();
 
     public User login(String name, String password);
+
+    public void register(User user);
 }
